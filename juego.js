@@ -1,30 +1,60 @@
+
 let puntosAtacante = 0;
 let puntosDefensor = 0;
 let resumenRondas = [];
 let ataque = '';
 let defensa = '';
+let modoJuego = ''; // 'vsBot' o '1vs1'
+
+function iniciarModoVSBot() {
+    modoJuego = 'vsBot';
+    iniciarJuego();
+}
+
+function iniciarModo1vs1() {
+    modoJuego = '1vs1';
+    iniciarJuego();
+}
 
 function iniciarJuego() {
     puntosAtacante = 0;
     puntosDefensor = 0;
     resumenRondas = [];
-    document.getElementById('juego').style.display = 'block';
-    document.getElementById('ataque').style.display = 'block';
-    document.getElementById('defensa').style.display = 'none';
+    document.getElementById('menu').style.display = 'none';
+    let juegoDiv = document.getElementById('juego');
+    juegoDiv.style.opacity = 0;
+    setTimeout(() => {
+        juegoDiv.style.display = 'block';
+        juegoDiv.style.opacity = 1;
+    }, 500);
+    document.getElementById('ataque').classList.add('show');
+    document.getElementById('defensa').classList.remove('show');
 }
 
 function elegirAtaque(eleccion) {
     ataque = eleccion;
-    document.getElementById('ataque').style.display = 'none';
-    document.getElementById('defensa').style.display = 'block';
+    document.getElementById('ataque').classList.remove('show');
+    setTimeout(() => {
+        if (modoJuego === 'vsBot') {
+            defensa = obtenerDefensaAleatoria();
+            comparar(defensa);
+        } else {
+            document.getElementById('defensa').classList.add('show');
+        }
+    }, 500);
+}
+
+function obtenerDefensaAleatoria() {
+    const opciones = ['arriba', 'medio', 'abajo'];
+    return opciones[Math.floor(Math.random() * opciones.length)];
 }
 
 function elegirDefensa(eleccion) {
     defensa = eleccion;
-    document.getElementById('defensa').style.display = 'none';
-    
-    // Comparar ataque y defensa
-    comparar(eleccion);
+    document.getElementById('defensa').classList.remove('show');
+    setTimeout(() => {
+        comparar(defensa);
+    }, 500);
 }
 
 function comparar(defensa) {
@@ -42,7 +72,10 @@ function comparar(defensa) {
     }
 
     if (resumenRondas.length < 5) {
-        document.getElementById('ataque').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('ataque').classList.add('show');
+            document.getElementById('defensa').classList.remove('show');
+        }, 500);
     } else {
         mostrarResumen();
     }
