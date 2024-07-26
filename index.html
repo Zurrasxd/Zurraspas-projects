@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Ataque y Defensa</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"> <!-- Fuente de pixel art -->
     <style>
         body {
-            font-family: 'Press Start 2P', cursive; /* Fuente de estilo pixel art */
-            background-image: url('fondo-menu.jpeg'); /* Ruta de la imagen de fondo */
-            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-            background-position: center; /* Centra la imagen en la pantalla */
-            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             color: #333;
             text-align: center;
-            margin: 0; /* Elimina el margen por defecto del body */
-            height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana del navegador */
         }
         h1 {
             color: #2c3e50;
@@ -52,32 +46,6 @@
         .oculto {
             display: none;
         }
-        #menu {
-            background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad para mejorar la legibilidad */
-            padding: 20px; /* Espacio interior para mejorar la visualización */
-            border-radius: 10px; /* Opcional: redondea las esquinas del área del menú */
-            margin: auto; /* Centra el área del menú */
-            width: fit-content; /* Ajusta el ancho del área del menú al contenido */
-        }
-        #mensaje {
-            font-size: 36px; /* Tamaño grande para el mensaje */
-            font-weight: bold; /* Hace que el texto sea negrita */
-            margin: 20px; /* Margen alrededor del mensaje */
-            color: #fff; /* Color del texto */
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
-            padding: 20px; /* Espacio interior del mensaje */
-            border-radius: 10px; /* Bordes redondeados para el fondo del mensaje */
-            position: absolute; /* Posiciona el mensaje sobre el contenido */
-            top: 50%; /* Centra verticalmente */
-            left: 50%; /* Centra horizontalmente */
-            transform: translate(-50%, -50%); /* Ajusta la posición para el centro exacto */
-        }
-        .acierto {
-            color: #2ecc71; /* Color verde para acierto */
-        }
-        .fallo {
-            color: #e74c3c; /* Color rojo para fallo */
-        }
     </style>
 </head>
 <body>
@@ -100,7 +68,6 @@
             <button onclick="elegirDefensa('medio')">Medio</button>
             <button onclick="elegirDefensa('abajo')">Abajo</button>
         </div>
-        <div id="mensaje" class="oculto"></div> <!-- Contenedor para el mensaje -->
         <div id="eleccionesAtaque"></div>
         <div id="resultado"></div>
     </div>
