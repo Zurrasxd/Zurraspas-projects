@@ -23,6 +23,18 @@ function iniciarModo1vs1() {
     document.getElementById('mensaje').classList.add('oculto'); // Ocultar el mensaje
 }
 
+// Función para mostrar instrucciones
+function mostrarInstrucciones() {
+    document.getElementById('menu').classList.add('oculto');
+    document.getElementById('instrucciones').classList.remove('oculto');
+}
+
+// Función para ocultar instrucciones
+function ocultarInstrucciones() {
+    document.getElementById('instrucciones').classList.add('oculto');
+    document.getElementById('menu').classList.remove('oculto');
+}
+
 // Función para elegir un ataque
 function elegirAtaque(posicion) {
     if (ronda < 5) {
@@ -48,9 +60,4 @@ function elegirDefensa(posicion) {
     // Mostrar mensaje
     const mensaje = document.getElementById('mensaje');
     mensaje.classList.remove('oculto');
-    mensaje.textContent = acierto ? '¡Acierto!' : 'Fallo';
-    mensaje.classList.add(acierto ? 'acierto' : 'fallo');
-
-    // Ocultar el mensaje después de 2 segundos (2000 milisegundos)
-    setTimeout(() => {
-        mensaje.classList.add
+    mensaje.textContent = acierto ? '¡Aci
