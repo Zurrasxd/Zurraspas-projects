@@ -3,52 +3,28 @@ let puntosDefensor = 0;
 let resumenRondas = [];
 let ataque = '';
 let defensa = '';
-let modoJuego = ''; // 'vsBot' o '1vs1'
-
-function iniciarModoVSBot() {
-    modoJuego = 'vsBot';
-    iniciarJuego();
-}
-
-function iniciarModo1vs1() {
-    modoJuego = '1vs1';
-    iniciarJuego();
-}
 
 function iniciarJuego() {
     puntosAtacante = 0;
     puntosDefensor = 0;
     resumenRondas = [];
-    document.getElementById('menu').style.display = 'none';
-    
-    let juegoDiv = document.getElementById('juego');
-    juegoDiv.style.display = 'block'; // Muestra el área de juego
-
-    // Muestra la sección de ataque y oculta la de defensa
+    document.getElementById('juego').style.display = 'block';
     document.getElementById('ataque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
 }
 
 function elegirAtaque(eleccion) {
     ataque = eleccion;
-    document.getElementById('ataque').style.display = 'none'; // Oculta la sección de ataque
-    if (modoJuego === 'vsBot') {
-        defensa = obtenerDefensaAleatoria();
-        comparar(defensa);
-    } else {
-        document.getElementById('defensa').style.display = 'block'; // Muestra la sección de defensa
-    }
-}
-
-function obtenerDefensaAleatoria() {
-    const opciones = ['arriba', 'medio', 'abajo'];
-    return opciones[Math.floor(Math.random() * opciones.length)];
+    document.getElementById('ataque').style.display = 'none';
+    document.getElementById('defensa').style.display = 'block';
 }
 
 function elegirDefensa(eleccion) {
     defensa = eleccion;
-    document.getElementById('defensa').style.display = 'none'; // Oculta la sección de defensa
-    comparar(defensa);
+    document.getElementById('defensa').style.display = 'none';
+    
+    // Comparar ataque y defensa
+    comparar(eleccion);
 }
 
 function comparar(defensa) {
@@ -66,9 +42,7 @@ function comparar(defensa) {
     }
 
     if (resumenRondas.length < 5) {
-        // Muestra la sección de ataque y oculta la de defensa
         document.getElementById('ataque').style.display = 'block';
-        document.getElementById('defensa').style.display = 'none';
     } else {
         mostrarResumen();
     }
