@@ -58,6 +58,18 @@
             margin: auto; /* Centra el área del menú */
             width: fit-content; /* Ajusta el ancho del área del menú al contenido */
         }
+        #mensaje {
+            font-size: 36px; /* Tamaño grande para el mensaje */
+            font-weight: bold; /* Hace que el texto sea negrita */
+            margin: 20px; /* Margen alrededor del mensaje */
+            color: #e74c3c; /* Color predeterminado para el mensaje */
+        }
+        .acierto {
+            color: #2ecc71; /* Color verde para acierto */
+        }
+        .fallo {
+            color: #e74c3c; /* Color rojo para fallo */
+        }
     </style>
 </head>
 <body>
@@ -80,6 +92,7 @@
             <button onclick="elegirDefensa('medio')">Medio</button>
             <button onclick="elegirDefensa('abajo')">Abajo</button>
         </div>
+        <div id="mensaje" class="oculto"></div> <!-- Contenedor para el mensaje -->
         <div id="eleccionesAtaque"></div>
         <div id="resultado"></div>
     </div>
