@@ -1,4 +1,3 @@
-
 let puntosAtacante = 0;
 let puntosDefensor = 0;
 let resumenRondas = [];
@@ -41,7 +40,7 @@ function elegirAtaque(eleccion) {
         } else {
             document.getElementById('defensa').classList.add('show');
         }
-    }, 500);
+    }, 500); // Tiempo de transición de 0.5s
 }
 
 function obtenerDefensaAleatoria() {
@@ -54,7 +53,7 @@ function elegirDefensa(eleccion) {
     document.getElementById('defensa').classList.remove('show');
     setTimeout(() => {
         comparar(defensa);
-    }, 500);
+    }, 500); // Tiempo de transición de 0.5s
 }
 
 function comparar(defensa) {
@@ -75,7 +74,7 @@ function comparar(defensa) {
         setTimeout(() => {
             document.getElementById('ataque').classList.add('show');
             document.getElementById('defensa').classList.remove('show');
-        }, 500);
+        }, 500); // Tiempo de transición de 0.5s
     } else {
         mostrarResumen();
     }
