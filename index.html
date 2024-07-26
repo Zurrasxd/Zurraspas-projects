@@ -60,7 +60,7 @@
             background: rgba(255, 255, 255, 0.8);
             padding: 10px;
             border-radius: 10px;
-            display: inline-block;
+            display: none; /* Oculta las secciones */
         }
         .rojo {
             color: red;
@@ -87,7 +87,7 @@
         <button onclick="iniciarModo1vs1()">Modo 1vs1</button>
         <button id="botonInstrucciones" onclick="mostrarInstrucciones()">¿Cómo jugar?</button>
     </div>
-    <div id="juego" class="oculto">
+    <div id="juego">
         <div id="ataque">
             <h2>Atacante, elige:</h2>
             <button onclick="elegirAtaque('arriba')">Arriba</button>
