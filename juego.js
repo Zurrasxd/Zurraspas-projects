@@ -24,22 +24,20 @@ function iniciarJuego() {
     let juegoDiv = document.getElementById('juego');
     juegoDiv.style.display = 'block'; // Muestra el área de juego
 
-    // Asegúrate de que los elementos de ataque y defensa estén correctamente ocultos al iniciar
-    document.getElementById('ataque').classList.add('show');
-    document.getElementById('defensa').classList.remove('show');
+    // Muestra la sección de ataque y oculta la de defensa
+    document.getElementById('ataque').style.display = 'block';
+    document.getElementById('defensa').style.display = 'none';
 }
 
 function elegirAtaque(eleccion) {
     ataque = eleccion;
-    document.getElementById('ataque').classList.remove('show');
-    setTimeout(() => {
-        if (modoJuego === 'vsBot') {
-            defensa = obtenerDefensaAleatoria();
-            comparar(defensa);
-        } else {
-            document.getElementById('defensa').classList.add('show');
-        }
-    }, 500); // Tiempo de transición de 0.5s
+    document.getElementById('ataque').style.display = 'none'; // Oculta la sección de ataque
+    if (modoJuego === 'vsBot') {
+        defensa = obtenerDefensaAleatoria();
+        comparar(defensa);
+    } else {
+        document.getElementById('defensa').style.display = 'block'; // Muestra la sección de defensa
+    }
 }
 
 function obtenerDefensaAleatoria() {
@@ -49,10 +47,8 @@ function obtenerDefensaAleatoria() {
 
 function elegirDefensa(eleccion) {
     defensa = eleccion;
-    document.getElementById('defensa').classList.remove('show');
-    setTimeout(() => {
-        comparar(defensa);
-    }, 500); // Tiempo de transición de 0.5s
+    document.getElementById('defensa').style.display = 'none'; // Oculta la sección de defensa
+    comparar(defensa);
 }
 
 function comparar(defensa) {
@@ -70,10 +66,9 @@ function comparar(defensa) {
     }
 
     if (resumenRondas.length < 5) {
-        setTimeout(() => {
-            document.getElementById('ataque').classList.add('show');
-            document.getElementById('defensa').classList.remove('show');
-        }, 500); // Tiempo de transición de 0.5s
+        // Muestra la sección de ataque y oculta la de defensa
+        document.getElementById('ataque').style.display = 'block';
+        document.getElementById('defensa').style.display = 'none';
     } else {
         mostrarResumen();
     }
