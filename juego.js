@@ -95,36 +95,4 @@ function actualizarResultadoRonda() {
     resumenRondas.forEach(linea => {
         resultado += `${linea}<br>`;
     });
-    document.getElementById('resultado').innerHTML = resultado;
-}
-
-function mostrarResumen() {
-    let resultado = `<h2>Resumen de las rondas:</h2>`;
-    resumenRondas.forEach(linea => {
-        resultado += `${linea}<br>`;
-    });
-
-    resultado += `<h2>Puntos del Atacante: ${puntosAtacante}</h2>`;
-    resultado += `<h2>Puntos del Defensor: ${puntosDefensor}</h2>`;
-
-    if (puntosAtacante > puntosDefensor) {
-        resultado += `<h2><span class="verde">¡El Atacante gana!</span></h2>`;
-    } else if (puntosDefensor > puntosAtacante) {
-        resultado += `<h2><span class="rojo">¡El Defensor gana!</span></h2>`;
-    } else {
-        resultado += `<h2>¡Es un empate!</h2>`;
-    }
-
-    document.getElementById('resultado').innerHTML = resultado;
-    document.getElementById('defensa').style.display = 'none';
-}
-
-function mostrarInstrucciones() {
-    document.getElementById('instrucciones').style.display = 'block';
-    document.getElementById('menu').style.display = 'none';
-}
-
-function ocultarInstrucciones() {
-    document.getElementById('instrucciones').style.display = 'none';
-    document.getElementById('menu').style.display = 'block';
-}
+    document.getElementById('resultado').inner
