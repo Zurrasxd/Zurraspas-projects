@@ -20,12 +20,11 @@ function iniciarJuego() {
     puntosDefensor = 0;
     resumenRondas = [];
     document.getElementById('menu').style.display = 'none';
+    
     let juegoDiv = document.getElementById('juego');
-    juegoDiv.style.opacity = 0;
-    setTimeout(() => {
-        juegoDiv.style.display = 'block';
-        juegoDiv.style.opacity = 1;
-    }, 500);
+    juegoDiv.style.display = 'block'; // Muestra el área de juego
+
+    // Asegúrate de que los elementos de ataque y defensa estén correctamente ocultos al iniciar
     document.getElementById('ataque').classList.add('show');
     document.getElementById('defensa').classList.remove('show');
 }
