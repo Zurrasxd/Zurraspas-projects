@@ -1,31 +1,40 @@
 // Variables globales para almacenar las elecciones
 let eleccionesAtaque = [];
 let eleccionesDefensa = [];
+let ronda = 0; // Contador de rondas del atacante
 
 // Función para iniciar el modo VS Bot
 function iniciarModoVSBot() {
-    // Implementa la lógica para el modo VS Bot
+    // Ocultar el menú y mostrar el área del juego
+    document.getElementById('menu').classList.add('oculto');
     document.getElementById('juego').classList.remove('oculto');
     document.getElementById('ataque').classList.remove('oculto');
     document.getElementById('defensa').classList.add('oculto');
-    document.getElementById('mensaje').classList.add('oculto'); // Oculta el mensaje
+    document.getElementById('mensaje').classList.add('oculto'); // Ocultar el mensaje
 }
 
 // Función para iniciar el modo 1vs1
 function iniciarModo1vs1() {
-    // Implementa la lógica para el modo 1vs1
+    // Ocultar el menú y mostrar el área del juego
+    document.getElementById('menu').classList.add('oculto');
     document.getElementById('juego').classList.remove('oculto');
     document.getElementById('ataque').classList.remove('oculto');
     document.getElementById('defensa').classList.add('oculto');
-    document.getElementById('mensaje').classList.add('oculto'); // Oculta el mensaje
+    document.getElementById('mensaje').classList.add('oculto'); // Ocultar el mensaje
 }
 
 // Función para elegir un ataque
 function elegirAtaque(posicion) {
-    eleccionesAtaque.push(posicion);
-    // Desplegar el menú de defensa
-    document.getElementById('ataque').classList.add('oculto');
-    document.getElementById('defensa').classList.remove('oculto');
+    if (ronda < 5) {
+        eleccionesAtaque.push(posicion);
+        ronda++;
+        // Si se han completado las 5 rondas, ocultar el menú de ataque y mostrar el de defensa
+        if (ronda === 5) {
+            document.getElementById('ataque').classList.add('oculto');
+            document.getElementById('defensa').classList.remove('oculto');
+            ronda = 0; // Reiniciar el contador para la próxima ronda
+        }
+    }
 }
 
 // Función para elegir una defensa
@@ -44,8 +53,4 @@ function elegirDefensa(posicion) {
 
     // Ocultar el mensaje después de 2 segundos (2000 milisegundos)
     setTimeout(() => {
-        mensaje.classList.add('oculto');
-        document.getElementById('defensa').classList.add('oculto'); // Ocultar el menú de defensa
-        document.getElementById('ataque').classList.remove('oculto'); // Volver a mostrar el menú de ataque
-    }, 2000);
-}
+        mensaje.classList.add
