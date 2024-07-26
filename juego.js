@@ -42,6 +42,10 @@ function elegirDefensa(posicion) {
     mensaje.textContent = acierto ? '¡Acierto!' : 'Fallo';
     mensaje.classList.add(acierto ? 'acierto' : 'fallo');
 
-    // Ocultar el menú de defensa
-    document.getElementById('defensa').classList.add('oculto');
+    // Ocultar el mensaje después de 2 segundos (2000 milisegundos)
+    setTimeout(() => {
+        mensaje.classList.add('oculto');
+        document.getElementById('defensa').classList.add('oculto'); // Ocultar el menú de defensa
+        document.getElementById('ataque').classList.remove('oculto'); // Volver a mostrar el menú de ataque
+    }, 2000);
 }
