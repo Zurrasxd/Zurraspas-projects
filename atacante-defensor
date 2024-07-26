@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Ataque y Defensa</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .rojo { color: red; }
+        .verde { color: green; }
+        #resultado { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Juego de Ataque y Defensa</h1>
+    <button onclick="iniciarJuego()">Comenzar Juego</button>
+    <div id="resultado"></div>
+    <script src="juego.js"></script>
+</body>
+</html>
