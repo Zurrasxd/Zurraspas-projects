@@ -17,15 +17,30 @@
             margin: 0; /* Elimina el margen por defecto del body */
             height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana del navegador */
         }
+        h1, h2, p {
+            background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
         h1 {
             color: #2c3e50;
+            font-size: 24px;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        p {
+            font-size: 14px;
         }
         button {
             background-color: #3498db;
             color: #fff;
             border: none;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             border-radius: 5px;
             margin: 5px;
@@ -41,7 +56,11 @@
         }
         #resultado, #juego, #instrucciones {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
         }
         .rojo {
             color: red;
