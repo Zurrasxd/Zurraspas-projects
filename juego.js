@@ -1,38 +1,72 @@
 let puntosAtacante = 0;
 let puntosDefensor = 0;
 let resumenRondas = [];
-let ataque = '';
-let defensa = '';
+let ataques = [];
+let defensas = [];
+let modoJuego = ''; // 'vsBot' o '1vs1'
 
-function iniciarJuego() {
+function iniciarModoVSBot() {
+    modoJuego = 'vsBot';
+    reiniciarJuego();
+}
+
+function iniciarModo1vs1() {
+    modoJuego = '1vs1';
+    reiniciarJuego();
+}
+
+function reiniciarJuego() {
     puntosAtacante = 0;
     puntosDefensor = 0;
     resumenRondas = [];
+    ataques = [];
+    defensas = [];
+    document.getElementById('menu').style.display = 'none';
     document.getElementById('juego').style.display = 'block';
     document.getElementById('ataque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
+    document.getElementById('ataquesElegidos').style.display = 'none';
+    document.getElementById('resultado').innerHTML = '';
 }
 
 function elegirAtaque(eleccion) {
-    ataque = eleccion;
-    document.getElementById('ataque').style.display = 'none';
-    document.getElementById('defensa').style.display = 'block';
+    ataques.push(eleccion);
+    document.getElementById('listaAtaques').innerHTML = ataques.join(', ');
+
+    if (ataques.length === 5) {
+        document.getElementById('ataque').style.display = 'none';
+        document.getElementById('ataquesElegidos').style.display = 'block';
+        if (modoJuego === 'vsBot') {
+            iniciarDefensaBot();
+        } else {
+            document.getElementById('defensa').style.display = 'block';
+        }
+    }
+}
+
+function iniciarDefensaBot() {
+    for (let i = 0; i < 5; i++) {
+        defensa = obtenerDefensaAleatoria();
+        comparar(ataques[i], defensa);
+    }
+    mostrarResumen();
+}
+
+function obtenerDefensaAleatoria() {
+    const opciones = ['arriba', 'medio', 'abajo'];
+    return opciones[Math.floor(Math.random() * opciones.length)];
 }
 
 function elegirDefensa(eleccion) {
-    defensa = eleccion;
-    document.getElementById('defensa').style.display = 'none';
-    
-    // Comparar ataque y defensa
-    comparar(eleccion);
+    defensas.push(eleccion);
+    comparar(ataques[defensas.length - 1], eleccion);
+
+    if (defensas.length === 5) {
+        mostrarResumen();
+    }
 }
 
-function comparar(defensa) {
-    if (!ataque || !defensa) {
-        alert("Por favor, selecciona ataque y defensa.");
-        return;
-    }
-
+function comparar(ataque, defensa) {
     if (ataque === defensa) {
         resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="rojo">¡Puntos para el defensor!</span>`);
         puntosDefensor++;
@@ -40,12 +74,15 @@ function comparar(defensa) {
         resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="verde">¡Puntos para el atacante!</span>`);
         puntosAtacante++;
     }
+    actualizarResultadoRonda();
+}
 
-    if (resumenRondas.length < 5) {
-        document.getElementById('ataque').style.display = 'block';
-    } else {
-        mostrarResumen();
-    }
+function actualizarResultadoRonda() {
+    let resultado = `<h2>Resumen de las rondas:</h2>`;
+    resumenRondas.forEach(linea => {
+        resultado += `${linea}<br>`;
+    });
+    document.getElementById('resultado').innerHTML = resultado;
 }
 
 function mostrarResumen() {
@@ -66,4 +103,5 @@ function mostrarResumen() {
     }
 
     document.getElementById('resultado').innerHTML = resultado;
+    document.getElementById('defensa').style.display = 'none';
 }
