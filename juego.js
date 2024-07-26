@@ -1,38 +1,51 @@
 let puntosAtacante = 0;
 let puntosDefensor = 0;
 let resumenRondas = [];
+let ataque = '';
+let defensa = '';
 
 function iniciarJuego() {
     puntosAtacante = 0;
     puntosDefensor = 0;
     resumenRondas = [];
-    jugar(1);
+    document.getElementById('juego').style.display = 'block';
+    document.getElementById('ataque').style.display = 'block';
+    document.getElementById('defensa').style.display = 'none';
 }
 
-function jugar(ronda) {
-    if (ronda > 5) {
-        mostrarResumen();
+function elegirAtaque(eleccion) {
+    ataque = eleccion;
+    document.getElementById('ataque').style.display = 'none';
+    document.getElementById('defensa').style.display = 'block';
+}
+
+function elegirDefensa(eleccion) {
+    defensa = eleccion;
+    document.getElementById('defensa').style.display = 'none';
+    
+    // Comparar ataque y defensa
+    comparar(eleccion);
+}
+
+function comparar(defensa) {
+    if (!ataque || !defensa) {
+        alert("Por favor, selecciona ataque y defensa.");
         return;
     }
 
-    const ataque = prompt("Atacante, elige un número del 1 al 3:");
-    const defensa = prompt("Defensor, elige un número del 1 al 3:");
-
-    if (ataque < 1 || ataque > 3 || defensa < 1 || defensa > 3) {
-        alert("Número inválido. Intenta nuevamente.");
-        jugar(ronda);
-        return;
-    }
-
-    if (ataque == defensa) {
-        resumenRondas.push(`Ronda ${ronda}: <span class="rojo">¡Puntos para el defensor!</span>`);
+    if (ataque === defensa) {
+        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="rojo">¡Puntos para el defensor!</span>`);
         puntosDefensor++;
     } else {
-        resumenRondas.push(`Ronda ${ronda}: <span class="verde">¡Puntos para el atacante!</span>`);
+        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="verde">¡Puntos para el atacante!</span>`);
         puntosAtacante++;
     }
 
-    jugar(ronda + 1);
+    if (resumenRondas.length < 5) {
+        document.getElementById('ataque').style.display = 'block';
+    } else {
+        mostrarResumen();
+    }
 }
 
 function mostrarResumen() {
