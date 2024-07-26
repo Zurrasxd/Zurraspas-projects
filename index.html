@@ -5,15 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego Ataque y Defensa</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .rojo { color: red; }
-        .verde { color: green; }
-        #resultado { margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .rojo {
+            color: red;
+        }
+        .verde {
+            color: green;
+        }
     </style>
 </head>
 <body>
     <h1>Bienvenido al Juego de Ataque y Defensa</h1>
     <button onclick="iniciarJuego()">Comenzar Juego</button>
+    <div id="juego" style="display: none;">
+        <div id="ataque">
+            <h2>Atacante, elige:</h2>
+            <button onclick="elegirAtaque('arriba')">Arriba</button>
+            <button onclick="elegirAtaque('medio')">Medio</button>
+            <button onclick="elegirAtaque('abajo')">Abajo</button>
+        </div>
+        <div id="defensa" style="display: none;">
+            <h2>Defensor, elige:</h2>
+            <button onclick="elegirDefensa('arriba')">Arriba</button>
+            <button onclick="elegirDefensa('medio')">Medio</button>
+            <button onclick="elegirDefensa('abajo')">Abajo</button>
+        </div>
+    </div>
     <div id="resultado"></div>
     <script src="juego.js"></script>
 </body>
