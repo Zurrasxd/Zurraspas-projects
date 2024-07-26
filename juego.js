@@ -22,7 +22,7 @@ function reiniciarJuego() {
     ataques = [];
     defensas = [];
     document.getElementById('menu').style.display = 'none';
-    document.getElementById('juego').style.display = 'block';
+    document.getElementById('juego').style.display = 'block'; // Mostrar la sección de juego
     document.getElementById('ataque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
     document.getElementById('eleccionesAtaque').innerHTML = '';
@@ -92,7 +92,4 @@ function comparar(ataque, defensa) {
 
 function actualizarResultadoRonda() {
     let resultado = `<h2>Resumen de las rondas:</h2>`;
-    resumenRondas.forEach(linea => {
-        resultado += `${linea}<br>`;
-    });
-    document.getElementById('resultado').inner
+    resumenR
