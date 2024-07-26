@@ -27,7 +27,13 @@
         button:hover {
             background-color: #2980b9;
         }
-        #resultado, #juego {
+        #botonInstrucciones {
+            background-color: #2ecc71;
+        }
+        #botonInstrucciones:hover {
+            background-color: #27ae60;
+        }
+        #resultado, #juego, #instrucciones {
             margin-top: 20px;
             font-size: 18px;
         }
@@ -37,6 +43,9 @@
         .verde {
             color: green;
         }
+        .oculto {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -44,22 +53,31 @@
     <div id="menu">
         <button onclick="iniciarModoVSBot()">Modo VS Bot</button>
         <button onclick="iniciarModo1vs1()">Modo 1vs1</button>
+        <button id="botonInstrucciones" onclick="mostrarInstrucciones()">¿Cómo jugar?</button>
     </div>
-    <div id="juego" style="display: none;">
+    <div id="juego" class="oculto">
         <div id="ataque">
             <h2>Atacante, elige:</h2>
             <button onclick="elegirAtaque('arriba')">Arriba</button>
             <button onclick="elegirAtaque('medio')">Medio</button>
             <button onclick="elegirAtaque('abajo')">Abajo</button>
-            <div id="eleccionesAtaque"></div>
         </div>
-        <div id="defensa" style="display: none;">
+        <div id="defensa" class="oculto">
             <h2>Defensor, elige:</h2>
             <button onclick="elegirDefensa('arriba')">Arriba</button>
             <button onclick="elegirDefensa('medio')">Medio</button>
             <button onclick="elegirDefensa('abajo')">Abajo</button>
         </div>
+        <div id="eleccionesAtaque"></div>
         <div id="resultado"></div>
+    </div>
+    <div id="instrucciones" class="oculto">
+        <h2>Instrucciones</h2>
+        <p>En el juego de Ataque y Defensa, hay dos modos de juego:</p>
+        <p><strong>Modo VS Bot:</strong> El jugador ataca y el bot defiende. El jugador selecciona 5 posiciones de ataque (arriba, medio, abajo). Después, el bot elige sus posiciones de defensa una por una con un intervalo de tiempo entre cada elección.</p>
+        <p><strong>Modo 1vs1:</strong> Dos jugadores se turnan para atacar y defender. El atacante selecciona 5 posiciones de ataque y luego el defensor elige sus posiciones de defensa. Se compara cada elección para determinar el ganador de cada ronda.</p>
+        <p>El objetivo es que el atacante seleccione una posición diferente a la del defensor para ganar un punto. Si el defensor elige la misma posición que el atacante, el defensor gana un punto.</p>
+        <button onclick="ocultarInstrucciones()">Cerrar</button>
     </div>
     <script src="juego.js"></script>
 </body>
