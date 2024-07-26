@@ -25,7 +25,6 @@ function reiniciarJuego() {
     document.getElementById('juego').style.display = 'block';
     document.getElementById('ataque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
-    document.getElementById('ataquesElegidos').style.display = 'none';
     document.getElementById('eleccionesAtaque').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
 }
@@ -36,12 +35,11 @@ function elegirAtaque(eleccion) {
     
     if (ataques.length === 5) {
         document.getElementById('ataque').style.display = 'none';
-        document.getElementById('ataquesElegidos').style.display = 'block';
         if (modoJuego === 'vsBot') {
             iniciarDefensaBot();
         } else {
-            document.getElementById('defensa').style.display = 'block';
             document.getElementById('eleccionesAtaque').style.display = 'none';
+            document.getElementById('defensa').style.display = 'block';
         }
     }
 }
@@ -51,8 +49,7 @@ function mostrarEleccionesAtaque() {
     contenedor.innerHTML = '';
     ataques.forEach(ataque => {
         const div = document.createElement('div');
-        div.classList.add('eleccion');
-        div.innerText = ataque.charAt(0).toUpperCase();
+        div.innerText = ataque;
         contenedor.appendChild(div);
     });
 }
