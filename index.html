@@ -37,6 +37,17 @@
         .verde {
             color: green;
         }
+        .eleccion {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -51,16 +62,13 @@
             <button onclick="elegirAtaque('arriba')">Arriba</button>
             <button onclick="elegirAtaque('medio')">Medio</button>
             <button onclick="elegirAtaque('abajo')">Abajo</button>
+            <div id="eleccionesAtaque"></div>
         </div>
         <div id="defensa" style="display: none;">
             <h2>Defensor, elige:</h2>
             <button onclick="elegirDefensa('arriba')">Arriba</button>
             <button onclick="elegirDefensa('medio')">Medio</button>
             <button onclick="elegirDefensa('abajo')">Abajo</button>
-        </div>
-        <div id="ataquesElegidos" style="display: none;">
-            <h2>Ataques elegidos:</h2>
-            <div id="listaAtaques"></div>
         </div>
         <div id="resultado"></div>
     </div>
