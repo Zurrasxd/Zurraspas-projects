@@ -27,9 +27,18 @@
         button:hover {
             background-color: #2980b9;
         }
-        #resultado {
+        #juego {
             margin-top: 20px;
             font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #ataque, #defensa {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .show {
+            opacity: 1;
         }
         .rojo {
             color: red;
@@ -41,15 +50,18 @@
 </head>
 <body>
     <h1>Bienvenido al Juego de Ataque y Defensa</h1>
-    <button onclick="iniciarJuego()">Comenzar Juego</button>
-    <div id="juego" style="display: none;">
-        <div id="ataque">
+    <div id="menu">
+        <button onclick="iniciarModoVSBot()">Modo VS Bot</button>
+        <button onclick="iniciarModo1vs1()">Modo 1vs1</button>
+    </div>
+    <div id="juego">
+        <div id="ataque" class="show">
             <h2>Atacante, elige:</h2>
             <button onclick="elegirAtaque('arriba')">Arriba</button>
             <button onclick="elegirAtaque('medio')">Medio</button>
             <button onclick="elegirAtaque('abajo')">Abajo</button>
         </div>
-        <div id="defensa" style="display: none;">
+        <div id="defensa">
             <h2>Defensor, elige:</h2>
             <button onclick="elegirDefensa('arriba')">Arriba</button>
             <button onclick="elegirDefensa('medio')">Medio</button>
