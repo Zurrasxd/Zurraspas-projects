@@ -1,63 +1,130 @@
-// Variables globales para almacenar las elecciones
-let eleccionesAtaque = [];
-let eleccionesDefensa = [];
-let ronda = 0; // Contador de rondas del atacante
+let puntosAtacante = 0;
+let puntosDefensor = 0;
+let resumenRondas = [];
+let ataques = [];
+let defensas = [];
+let modoJuego = ''; // 'vsBot' o '1vs1'
 
-// Función para iniciar el modo VS Bot
 function iniciarModoVSBot() {
-    // Ocultar el menú y mostrar el área del juego
-    document.getElementById('menu').classList.add('oculto');
-    document.getElementById('juego').classList.remove('oculto');
-    document.getElementById('ataque').classList.remove('oculto');
-    document.getElementById('defensa').classList.add('oculto');
-    document.getElementById('mensaje').classList.add('oculto'); // Ocultar el mensaje
+    modoJuego = 'vsBot';
+    reiniciarJuego();
 }
 
-// Función para iniciar el modo 1vs1
 function iniciarModo1vs1() {
-    // Ocultar el menú y mostrar el área del juego
-    document.getElementById('menu').classList.add('oculto');
-    document.getElementById('juego').classList.remove('oculto');
-    document.getElementById('ataque').classList.remove('oculto');
-    document.getElementById('defensa').classList.add('oculto');
-    document.getElementById('mensaje').classList.add('oculto'); // Ocultar el mensaje
+    modoJuego = '1vs1';
+    reiniciarJuego();
 }
 
-// Función para mostrar instrucciones
-function mostrarInstrucciones() {
-    document.getElementById('menu').classList.add('oculto');
-    document.getElementById('instrucciones').classList.remove('oculto');
+function reiniciarJuego() {
+    puntosAtacante = 0;
+    puntosDefensor = 0;
+    resumenRondas = [];
+    ataques = [];
+    defensas = [];
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('juego').style.display = 'block';
+    document.getElementById('ataque').style.display = 'block';
+    document.getElementById('defensa').style.display = 'none';
+    document.getElementById('eleccionesAtaque').innerHTML = '';
+    document.getElementById('resultado').innerHTML = '';
 }
 
-// Función para ocultar instrucciones
-function ocultarInstrucciones() {
-    document.getElementById('instrucciones').classList.add('oculto');
-    document.getElementById('menu').classList.remove('oculto');
-}
-
-// Función para elegir un ataque
-function elegirAtaque(posicion) {
-    if (ronda < 5) {
-        eleccionesAtaque.push(posicion);
-        ronda++;
-        // Si se han completado las 5 rondas, ocultar el menú de ataque y mostrar el de defensa
-        if (ronda === 5) {
-            document.getElementById('ataque').classList.add('oculto');
-            document.getElementById('defensa').classList.remove('oculto');
-            ronda = 0; // Reiniciar el contador para la próxima ronda
+function elegirAtaque(eleccion) {
+    ataques.push(eleccion);
+    mostrarEleccionesAtaque();
+    
+    if (ataques.length === 5) {
+        document.getElementById('ataque').style.display = 'none';
+        document.getElementById('eleccionesAtaque').style.display = 'none';
+        if (modoJuego === 'vsBot') {
+            iniciarDefensaBot(0);
+        } else {
+            document.getElementById('defensa').style.display = 'block';
         }
     }
 }
 
-// Función para elegir una defensa
-function elegirDefensa(posicion) {
-    eleccionesDefensa.push(posicion);
+function mostrarEleccionesAtaque() {
+    const contenedor = document.getElementById('eleccionesAtaque');
+    contenedor.innerHTML = '';
+    ataques.forEach(ataque => {
+        const div = document.createElement('div');
+        div.innerText = ataque;
+        contenedor.appendChild(div);
+    });
+}
 
-    // Lógica para comprobar si hay acierto o fallo
-    const ultimaEleccionAtaque = eleccionesAtaque[eleccionesAtaque.length - 1];
-    const acierto = eleccionesDefensa.includes(ultimaEleccionAtaque);
+function iniciarDefensaBot(indice) {
+    if (indice < 5) {
+        const defensa = obtenerDefensaAleatoria();
+        defensas.push(defensa);
+        comparar(ataques[indice], defensa);
+        setTimeout(() => iniciarDefensaBot(indice + 1), 1000); // 1 segundo de intervalo
+    } else {
+        mostrarResumen();
+    }
+}
 
-    // Mostrar mensaje
-    const mensaje = document.getElementById('mensaje');
-    mensaje.classList.remove('oculto');
-    mensaje.textContent = acierto ? '¡Aci
+function obtenerDefensaAleatoria() {
+    const opciones = ['arriba', 'medio', 'abajo'];
+    return opciones[Math.floor(Math.random() * opciones.length)];
+}
+
+function elegirDefensa(eleccion) {
+    defensas.push(eleccion);
+    comparar(ataques[defensas.length - 1], eleccion);
+
+    if (defensas.length === 5) {
+        mostrarResumen();
+    }
+}
+
+function comparar(ataque, defensa) {
+    if (ataque === defensa) {
+        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="rojo">¡Puntos para el defensor!</span>`);
+        puntosDefensor++;
+    } else {
+        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="verde">¡Puntos para el atacante!</span>`);
+        puntosAtacante++;
+    }
+    actualizarResultadoRonda();
+}
+
+function actualizarResultadoRonda() {
+    let resultado = `<h2>Resumen de las rondas:</h2>`;
+    resumenRondas.forEach(linea => {
+        resultado += `${linea}<br>`;
+    });
+    document.getElementById('resultado').innerHTML = resultado;
+}
+
+function mostrarResumen() {
+    let resultado = `<h2>Resumen de las rondas:</h2>`;
+    resumenRondas.forEach(linea => {
+        resultado += `${linea}<br>`;
+    });
+
+    resultado += `<h2>Puntos del Atacante: ${puntosAtacante}</h2>`;
+    resultado += `<h2>Puntos del Defensor: ${puntosDefensor}</h2>`;
+
+    if (puntosAtacante > puntosDefensor) {
+        resultado += `<h2><span class="verde">¡El Atacante gana!</span></h2>`;
+    } else if (puntosDefensor > puntosAtacante) {
+        resultado += `<h2><span class="rojo">¡El Defensor gana!</span></h2>`;
+    } else {
+        resultado += `<h2>¡Es un empate!</h2>`;
+    }
+
+    document.getElementById('resultado').innerHTML = resultado;
+    document.getElementById('defensa').style.display = 'none';
+}
+
+function mostrarInstrucciones() {
+    document.getElementById('instrucciones').style.display = 'block';
+    document.getElementById('menu').style.display = 'none';
+}
+
+function ocultarInstrucciones() {
+    document.getElementById('instrucciones').style.display = 'none';
+    document.getElementById('menu').style.display = 'block';
+}
