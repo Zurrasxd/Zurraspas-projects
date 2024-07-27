@@ -22,7 +22,7 @@ function reiniciarJuego() {
     ataques = [];
     defensas = [];
     document.getElementById('menu').style.display = 'none';
-    document.getElementById('juego').style.display = 'block'; // Mostrar la sección de juego
+    document.getElementById('juego').style.display = 'block';
     document.getElementById('ataque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
     document.getElementById('eleccionesAtaque').innerHTML = '';
@@ -99,5 +99,29 @@ function actualizarResultadoRonda() {
 }
 
 function mostrarResumen() {
-    let resultadoFinal = `<h2>Resultado Final:</h2>`;
-    resultadoFinal += `<
+    let resultado = `<h2>Resumen de las rondas:</h2>`;
+    resumenRondas.forEach(linea => {
+        resultado += `${linea}<br>`;
+    });
+
+    resultado += `<h2>Puntos del Atacante: ${puntosAtacante}</h2>`;
+    resultado += `<h2>Puntos del Defensor: ${puntosDefensor}</h2>`;
+
+    if (puntosAtacante > puntosDefensor) {
+        resultado += `<h2><span class="verde">¡El Atacante gana!</span></h2>`;
+    } else {
+        resultado += `<h2><span class="rojo">¡El Defensor gana!</span></h2>`;
+    }
+
+    document.getElementById('resultado').innerHTML = resultado;
+}
+
+function mostrarInstrucciones() {
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById('instrucciones').style.display = 'block';
+}
+
+function ocultarInstrucciones() {
+    document.getElementById('instrucciones').style.display = 'none';
+    document.getElementById('menu').style.display = 'block';
+}
