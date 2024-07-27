@@ -63,6 +63,8 @@ function iniciarDefensaBot(indice) {
         setTimeout(() => iniciarDefensaBot(indice + 1), 1000); // 1 segundo de intervalo
     } else {
         mostrarResumen();
+        document.getElementById('defensa').style.display = 'none';
+        document.getElementById('finalButtons').style.display = 'block';
     }
 }
 
@@ -109,12 +111,20 @@ function mostrarResumen() {
 
     resultado += `<h2>Puntos del Atacante: ${puntosAtacante}</h2>`;
     resultado += `<h2>Puntos del Defensor: ${puntosDefensor}</h2>`;
+
+    if (puntosAtacante > puntosDefensor) {
+        resultado += `<h2><span class="verde">¡El Atacante gana!</span></h2>`;
+    } else {
+        resultado += `<h2><span class="rojo">¡El Defensor gana!</span></h2>`;
+    }
+
     document.getElementById('resultado').innerHTML = resultado;
 }
 
 function volverAlMenu() {
     document.getElementById('juego').style.display = 'none';
     document.getElementById('menu').style.display = 'block';
+    document.getElementById('finalButtons').style.display = 'none';
 }
 
 function reiniciarPartida() {
