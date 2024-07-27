@@ -19,6 +19,9 @@
         }
         h1 {
             color: #2c3e50;
+            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            display: inline-block;
+            padding: 10px;
         }
         button {
             background-color: #3498db;
@@ -42,6 +45,9 @@
         #resultado, #juego, #instrucciones {
             margin-top: 20px;
             font-size: 18px;
+            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            display: inline-block;
+            padding: 10px;
         }
         .rojo {
             color: red;
@@ -58,6 +64,9 @@
             border-radius: 10px; /* Opcional: redondea las esquinas del área del menú */
             margin: auto; /* Centra el área del menú */
             width: fit-content; /* Ajusta el ancho del área del menú al contenido */
+        }
+        #finalButtons {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -83,6 +92,10 @@
         </div>
         <div id="eleccionesAtaque"></div>
         <div id="resultado"></div>
+        <div id="finalButtons" class="oculto">
+            <button onclick="reiniciarPartida()">Revancha</button>
+            <button onclick="volverAlMenu()">Volver al Menú</button>
+        </div>
     </div>
     <div id="instrucciones" class="oculto">
         <h2>Instrucciones</h2>
