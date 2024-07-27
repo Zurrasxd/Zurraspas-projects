@@ -133,3 +133,13 @@ function reiniciarPartida() {
         document.getElementById('eleccionesAtaque').style.display = 'block';
     }
 }
+
+function mostrarInstrucciones() {
+    document.getElementById('instrucciones').style.display = 'block';
+    document.getElementById('menu').style.display = 'none';
+}
+
+function ocultarInstrucciones() {
+    document.getElementById('instrucciones').style.display = 'none';
+    document.getElementById('menu').style.display = 'block';
+}
