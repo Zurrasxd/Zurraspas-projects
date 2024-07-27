@@ -78,7 +78,6 @@ function elegirDefensa(eleccion) {
     comparar(ataques[defensas.length - 1], eleccion);
 
     if (defensas.length === 5) {
-        document.getElementById('defensa').style.display = 'none';
         mostrarResumen();
         document.getElementById('finalButtons').style.display = 'block';
     }
