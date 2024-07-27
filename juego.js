@@ -24,6 +24,7 @@ function reiniciarJuego() {
     document.getElementById('menu').style.display = 'none';
     document.getElementById('juego').style.display = 'block';
     document.getElementById('ataque').style.display = 'block';
+    document.getElementById('eleccionesAtaque').style.display = 'block';
     document.getElementById('defensa').style.display = 'none';
     document.getElementById('eleccionesAtaque').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
@@ -63,7 +64,6 @@ function iniciarDefensaBot(indice) {
         setTimeout(() => iniciarDefensaBot(indice + 1), 1000); // 1 segundo de intervalo
     } else {
         mostrarResumen();
-        document.getElementById('defensa').style.display = 'none';
         document.getElementById('finalButtons').style.display = 'block';
     }
 }
@@ -79,7 +79,6 @@ function elegirDefensa(eleccion) {
 
     if (defensas.length === 5) {
         mostrarResumen();
-        document.getElementById('defensa').style.display = 'none';
         document.getElementById('finalButtons').style.display = 'block';
     }
 }
@@ -129,4 +128,8 @@ function volverAlMenu() {
 
 function reiniciarPartida() {
     reiniciarJuego();
+    if (modoJuego === 'vsBot') {
+        document.getElementById('ataque').style.display = 'block';
+        document.getElementById('eleccionesAtaque').style.display = 'block';
+    }
 }
