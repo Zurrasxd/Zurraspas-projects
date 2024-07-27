@@ -92,4 +92,12 @@ function comparar(ataque, defensa) {
 
 function actualizarResultadoRonda() {
     let resultado = `<h2>Resumen de las rondas:</h2>`;
-    resumenR
+    resumenRondas.forEach(linea => {
+        resultado += `${linea}<br>`;
+    });
+    document.getElementById('resultado').innerHTML = resultado;
+}
+
+function mostrarResumen() {
+    let resultadoFinal = `<h2>Resultado Final:</h2>`;
+    resultadoFinal += `<
