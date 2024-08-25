@@ -1,0 +1,15 @@
+<div id="instrucciones">
+    <h2>Instrucciones</h2>
+    <p>En el juego de Ataque y Defensa, hay dos modos de juego:</p>
+    <p><strong>Modo VS Bot:</strong> El jugador ataca y el bot defiende. El jugador selecciona 5 posiciones de ataque (arriba, medio, abajo). Después, el bot elige sus posiciones de defensa una por una con un intervalo de tiempo entre cada elección.</p>
+    <p><strong>Modo 1vs1:</strong> Dos jugadores se turnan para atacar y defender. El atacante selecciona 5 posiciones de ataque y luego el defensor elige sus posiciones de defensa. Se compara cada elección para determinar el ganador de cada ronda.</p>
+    <p>El objetivo es que el atacante seleccione una posición diferente a la del defensor para ganar un punto. Si el defensor elige la misma posición que el atacante, el defensor gana un punto.</p>
+    <button id="volverAlMenu">Volver al Menú</button>
+</div>
+
+<script>
+    // Asigna la función de volver al menú al botón
+    document.getElementById('volverAlMenu').onclick = function() {
+        location.reload();
+    };
+</script>
