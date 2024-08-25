@@ -8,18 +8,18 @@
     <style>
         body {
             font-family: 'Press Start 2P', cursive;
-            background-image: url('fondo-menu.jpeg'); /* Ruta de la imagen de fondo */
-            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-            background-position: center; /* Centra la imagen en la pantalla */
-            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-image: url('fondo-menu.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #333;
             text-align: center;
-            margin: 0; /* Elimina el margen por defecto del body */
-            height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana del navegador */
+            margin: 0;
+            height: 100vh;
         }
         h1 {
             color: #2c3e50;
-            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            background: rgba(255, 255, 255, 0.8);
             display: inline-block;
             padding: 10px;
         }
@@ -42,31 +42,12 @@
         #botonInstrucciones:hover {
             background-color: #27ae60;
         }
-        #resultado, #juego, #instrucciones {
-            margin-top: 20px;
-            font-size: 18px;
-            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-            display: inline-block;
-            padding: 10px;
-        }
-        .rojo {
-            color: red;
-        }
-        .verde {
-            color: green;
-        }
-        .oculto {
-            display: none;
-        }
         #menu {
-            background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad para mejorar la legibilidad */
-            padding: 20px; /* Espacio interior para mejorar la visualización */
-            border-radius: 10px; /* Opcional: redondea las esquinas del área del menú */
-            margin: auto; /* Centra el área del menú */
-            width: fit-content; /* Ajusta el ancho del área del menú al contenido */
-        }
-        #finalButtons {
-            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            width: fit-content;
         }
     </style>
 </head>
@@ -76,34 +57,6 @@
         <button onclick="iniciarModoVSBot()">Modo VS Bot</button>
         <button onclick="iniciarModo1vs1()">Modo 1vs1</button>
         <button id="botonInstrucciones" onclick="mostrarInstrucciones()">¿Cómo jugar?</button>
-    </div>
-    <div id="juego" class="oculto">
-        <div id="ataque">
-            <h2>Atacante, elige:</h2>
-            <button onclick="elegirAtaque('arriba')">Arriba</button>
-            <button onclick="elegirAtaque('medio')">Medio</button>
-            <button onclick="elegirAtaque('abajo')">Abajo</button>
-        </div>
-        <div id="defensa" class="oculto">
-            <h2>Defensor, elige:</h2>
-            <button onclick="elegirDefensa('arriba')">Arriba</button>
-            <button onclick="elegirDefensa('medio')">Medio</button>
-            <button onclick="elegirDefensa('abajo')">Abajo</button>
-        </div>
-        <div id="eleccionesAtaque"></div>
-        <div id="resultado"></div>
-        <div id="finalButtons" class="oculto">
-            <button onclick="reiniciarPartida()">Revancha</button>
-            <button onclick="volverAlMenu()">Volver al Menú</button>
-        </div>
-    </div>
-    <div id="instrucciones" class="oculto">
-        <h2>Instrucciones</h2>
-        <p>En el juego de Ataque y Defensa, hay dos modos de juego:</p>
-        <p><strong>Modo VS Bot:</strong> El jugador ataca y el bot defiende. El jugador selecciona 5 posiciones de ataque (arriba, medio, abajo). Después, el bot elige sus posiciones de defensa una por una con un intervalo de tiempo entre cada elección.</p>
-        <p><strong>Modo 1vs1:</strong> Dos jugadores se turnan para atacar y defender. El atacante selecciona 5 posiciones de ataque y luego el defensor elige sus posiciones de defensa. Se compara cada elección para determinar el ganador de cada ronda.</p>
-        <p>El objetivo es que el atacante seleccione una posición diferente a la del defensor para ganar un punto. Si el defensor elige la misma posición que el atacante, el defensor gana un punto.</p>
-        <button onclick="ocultarInstrucciones()">Cerrar</button>
     </div>
     <script src="juego.js"></script>
 </body>
