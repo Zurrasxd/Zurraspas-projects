@@ -1,3 +1,10 @@
+// Al cargar la página, solo se muestra el menú principal.
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('menu').style.display = 'block';
+    document.getElementById('juego').style.display = 'none';
+    document.getElementById('instrucciones').style.display = 'none';
+});
+
 let puntosAtacante = 0;
 let puntosDefensor = 0;
 let resumenRondas = [];
