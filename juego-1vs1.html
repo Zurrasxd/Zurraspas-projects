@@ -1,0 +1,26 @@
+<div id="juego">
+    <div id="ataque">
+        <h2>Atacante, elige:</h2>
+        <button onclick="elegirAtaque('arriba')">Arriba</button>
+        <button onclick="elegirAtaque('medio')">Medio</button>
+        <button onclick="elegirAtaque('abajo')">Abajo</button>
+    </div>
+    <div id="defensa" class="oculto">
+        <h2>Defensor, elige:</h2>
+        <button onclick="elegirDefensa('arriba')">Arriba</button>
+        <button onclick="elegirDefensa('medio')">Medio</button>
+        <button onclick="elegirDefensa('abajo')">Abajo</button>
+    </div>
+    <div id="eleccionesAtaque"></div>
+    <div id="resultado"></div>
+    <div id="finalButtons" class="oculto">
+        <button onclick="reiniciarPartida()">Revancha</button>
+        <button onclick="volverAlMenu()">Volver al Menú</button>
+    </div>
+</div>
+
+<script>
+    // Configura el juego para el modo 1vs1
+    modoJuego = '1vs1';
+    reiniciarJuego();
+</script>
