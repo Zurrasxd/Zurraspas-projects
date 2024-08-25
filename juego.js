@@ -21,14 +21,14 @@ function reiniciarJuego() {
     resumenRondas = [];
     ataques = [];
     defensas = [];
-    document.getElementById('menu').style.display = 'none';
-    document.getElementById('juego').style.display = 'block';
-    document.getElementById('ataque').style.display = 'block';
-    document.getElementById('eleccionesAtaque').style.display = 'block';
-    document.getElementById('defensa').style.display = 'none';
+    
+    document.getElementById('menu').classList.add('oculto');
+    document.getElementById('juego').classList.remove('oculto');
+    document.getElementById('ataque').classList.remove('oculto');
+    document.getElementById('defensa').classList.add('oculto');
     document.getElementById('eleccionesAtaque').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
-    document.getElementById('finalButtons').style.display = 'none';
+    document.getElementById('finalButtons').classList.add('oculto');
 }
 
 function elegirAtaque(eleccion) {
@@ -36,12 +36,12 @@ function elegirAtaque(eleccion) {
     mostrarEleccionesAtaque();
     
     if (ataques.length === 5) {
-        document.getElementById('ataque').style.display = 'none';
-        document.getElementById('eleccionesAtaque').style.display = 'none';
+        document.getElementById('ataque').classList.add('oculto');
+        document.getElementById('eleccionesAtaque').classList.add('oculto');
         if (modoJuego === 'vsBot') {
             iniciarDefensaBot(0);
         } else {
-            document.getElementById('defensa').style.display = 'block';
+            document.getElementById('defensa').classList.remove('oculto');
         }
     }
 }
@@ -64,7 +64,7 @@ function iniciarDefensaBot(indice) {
         setTimeout(() => iniciarDefensaBot(indice + 1), 1000); // 1 segundo de intervalo
     } else {
         mostrarResumen();
-        document.getElementById('finalButtons').style.display = 'block';
+        document.getElementById('finalButtons').classList.remove('oculto');
     }
 }
 
@@ -79,67 +79,8 @@ function elegirDefensa(eleccion) {
 
     if (defensas.length === 5) {
         mostrarResumen();
-        document.getElementById('finalButtons').style.display = 'block';
+        document.getElementById('finalButtons').classList.remove('oculto');
     }
 }
 
-function comparar(ataque, defensa) {
-    if (ataque === defensa) {
-        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="rojo">¡Puntos para el defensor!</span>`);
-        puntosDefensor++;
-    } else {
-        resumenRondas.push(`Ronda ${resumenRondas.length + 1}: <span class="verde">¡Puntos para el atacante!</span>`);
-        puntosAtacante++;
-    }
-    actualizarResultadoRonda();
-}
-
-function actualizarResultadoRonda() {
-    let resultado = `<h2>Resumen de las rondas:</h2>`;
-    resumenRondas.forEach(linea => {
-        resultado += `${linea}<br>`;
-    });
-    document.getElementById('resultado').innerHTML = resultado;
-}
-
-function mostrarResumen() {
-    let resultado = `<h2>Resumen de las rondas:</h2>`;
-    resumenRondas.forEach(linea => {
-        resultado += `${linea}<br>`;
-    });
-
-    resultado += `<h2>Puntos del Atacante: ${puntosAtacante}</h2>`;
-    resultado += `<h2>Puntos del Defensor: ${puntosDefensor}</h2>`;
-
-    if (puntosAtacante > puntosDefensor) {
-        resultado += `<h2><span class="verde">¡El Atacante gana!</span></h2>`;
-    } else {
-        resultado += `<h2><span class="rojo">¡El Defensor gana!</span></h2>`;
-    }
-
-    document.getElementById('resultado').innerHTML = resultado;
-}
-
-function volverAlMenu() {
-    document.getElementById('juego').style.display = 'none';
-    document.getElementById('menu').style.display = 'block';
-    document.getElementById('finalButtons').style.display = 'none';
-}
-
-function reiniciarPartida() {
-    reiniciarJuego();
-    if (modoJuego === 'vsBot') {
-        document.getElementById('ataque').style.display = 'block';
-        document.getElementById('eleccionesAtaque').style.display = 'block';
-    }
-}
-
-function mostrarInstrucciones() {
-    document.getElementById('instrucciones').style.display = 'block';
-    document.getElementById('menu').style.display = 'none';
-}
-
-function ocultarInstrucciones() {
-    document.getElementById('instrucciones').style.display = 'none';
-    document.getElementById('menu').style.display = 'block';
-}
+function comparar(ataque
