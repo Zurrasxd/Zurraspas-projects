@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    
+    <title>Proyectos</title>
+</head>
+<body>
+    <h1><b>Lista de Marcas</b></h1>
+    <ol type="I">
+        <li>Apple</li>
+        <ul type="circle" >
+            <li>Iphone</li>
+            <li>McBook</li>
+        </ul>
+        <li>Samsung</li>
+        <ul type="circle">
+            <li>Galaxy</li>
+            <li>Notepad</li>
+        </ul>
+        <li>Lg</li>
+    </ol>
+
+<h1><b>Ultimos proyectos</b></h1>
+
+<table border="2" cellpadding="10">
+    <tr>
+        <td rowspan="3"><img src="../imagenes/proy.png" alt="Carpeta con tuerca" width="100" height="100"></td>
+        <td><b>Proyecto 1</b></td>
+        <td><b style="background-color: yellow;">RENOVABLES</b></td> <!-- Highlight solo en el texto -->
+        <td><a href="../imagenes/proyecto1.png">Ver imagen del Proyecto 1</a></td>
+    </tr>
+    <tr>
+        <td><b>Proyecto 2</b></td>
+        <td><b style="background-color: yellow;">FOTOVOLTAICA</b></td> <!-- Highlight solo en el texto -->
+        <td><a href="../imagenes/proyecto2.png">Ver imagen del Proyecto 2</a></td>
+    </tr>
+    <tr>
+        <td colspan="3"><a href="../Indice.html">Volver a la página principal</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
