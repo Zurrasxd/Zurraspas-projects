@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Indice</title>
+    
+</head>
+<body>
+    <h1><b>Mi sitio</b></h1>
+
+    <p>Página web con un enlace a varias paginas</p>
+    
+    <h2><b>Ultimos proyectos</b></h2>
+    
+    <p>acceso a mis proyectos</p>
+
+    <a href="../Ejercicio HTML/portafolio/Proyectos.html">Pagina Proyectos</a>
+
+    <h2><b>FORMULARIO OPCIONES</b></h2>
+<form></form>
+    <input type="radio" name="MP3" value="1">MP3 MINI
+<br>
+    <input type="radio" name="MP3" value="2">MP3 Grande
+<br>
+</form>
+<p>Elige el coche te gusta</p>
+<form>
+    <select>            
+        <option value="Volvo">Volvo</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Ford">Ford</option>
+        <option value="BMW">BMW</option>
+        <option value="Audi">Audi</option>
+        <option value="Maserati">Maserati</option>
+        <option value="Dacia">Dacia</option>
+        <option value="Seat">Seat</option>
+        <option value="Renault">Renault</option>
+    
+    </select>
+</form>
+
+<hr size="1" color="black" width="70%" align="left">
+
+<p>Escribe el motivo de tu eleccion</p>
+
+<textarea name="Razones" rows="5" cols="60"></textarea>
+
+</body>
+</html>
